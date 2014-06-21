@@ -1,0 +1,11 @@
+#mittariBG
+{
+position:absolute;
+background-image: url(../Images/Samples/mittari.png); height:272; width:345;
+}
+
+#viisari
+{
+position:absolute;
+background-image: url(../Images/Samples/viisari.png); height:166; width:75;
+}
