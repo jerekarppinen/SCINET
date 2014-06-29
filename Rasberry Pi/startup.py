@@ -18,7 +18,7 @@ if os.path.isfile(file) == False:
 	data = urllib.urlencode(data)
 	
 	# Set path to the cloud service
-	path = "http://localhost/SCINET/index.php/api/startUp"
+	path = "http://scinet.fi/SCINET_DEV/index.php/api/startUp"
 
 	req = urllib2.Request(path, data)
 	req.add_header("Content-type", "application/x-www-form-urlencoded")
@@ -36,7 +36,7 @@ if os.path.isfile(file) == False:
 	f = open("serial.txt", "w")
 	f.write(serial)
 	f.close()
-	
+	print "Added new serial"	
 
 else:
 	print "File found"
