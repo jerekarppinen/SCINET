@@ -1,11 +1,21 @@
 #mittariBG
 {
-position:absolute;
-background-image: url(../Images/Samples/mittari.png); height:272; width:345;
+position:relative;
+background-image: url(Images/Samples/mittari.png); height:272; width:345;
 }
 
 #viisari
 {
 position:absolute;
-background-image: url(../Images/Samples/viisari.png); height:166; width:75;
+background-image: url(Images/Samples/viisari.png); height:166; width:75;
+}
+#lampotila
+{
+position:relative;
+}
+div.UI_mittari
+{
+/*
+	T‰h‰n lis‰t‰‰n tyylit ja muotoilut mit‰ mittaristo k‰ytt‰‰
+*/
 }
