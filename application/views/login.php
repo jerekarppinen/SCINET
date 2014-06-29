@@ -24,7 +24,9 @@
 
 		});
 
-		$("#login").click(function(){
+		$("#submit").submit(function(event){
+
+			event.preventDefault();
 
 			var device = $("#device").val();
 
@@ -63,8 +65,10 @@
 		<p>Palvelun avulla voit seurata saunan lämpötilaa miltä päätelaitteelta tahansa</p>
 
 		<div id="login-container">
+			<form id="submit" method="post" action="">
 			<input type="text" id="device" value="Laitteen sarjanumero...">
-			<button id="login">Sisään</button>
+			<input type="submit" id="login" value="Sisään">
+			</form>
 			<span id="error">Laitteen tunnus väärin</span>
 		</div>
 
