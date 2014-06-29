@@ -1,8 +1,8 @@
 Rasberry Pi:n toiminta:
 1) RasPi ottaa yhteyden palvelimelle ja lähettää GET ID käskyn. ->
-3) RasPi vastaanottaa numerosarjan ja tallentaa sen levylle.
+3) RasPi vastaanottaa kirjain/numerosarjan ja tallentaa sen levylle.
 4) ID:tä käyttäen RasPi lähettää lämpötilatiedot oletusasetuksilla (esim. 5min välein) tiedot palvelimelle
 
 Palvelimen toiminta:
-2) Palvelin vastaanottaa RasPin käskyn GET ID ja palauttaa numerosarjan <-
+2) Palvelin vastaanottaa RasPin käskyn GET ID ja palauttaa kirjain/numerosarjan <-
 5) Palvelin tallentaa tiedot ID:n perusteella kantaan ja näyttää ne tarvittaessa kyselijälle (html).
