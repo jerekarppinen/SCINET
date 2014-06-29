@@ -190,4 +190,26 @@ class Api extends CI_Controller {
 		}
 	}
 
+	// Function called by RasPi
+	public function startUp()
+	{
+
+		$yptologin = $this->input->post("yptologin");
+
+		if($yptologin != "LiisaIhmeMaassa")
+		{
+			echo "Not permitted.";
+		}
+		else
+		{
+
+			$this->load->model("custom_model");
+
+			$new_serial = $this->custom_model->getUniqueSerial();
+			
+			$this->addDevice($new_serial, 100, "", "LiisaIhmeMaassa");
+
+		}
+	}
+
 }
