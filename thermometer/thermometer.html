@@ -2,13 +2,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <meta charset="UTF-8">
-<meta http-equiv="refresh" content="5" >
+<meta http-equiv="refresh" content="60" >
 <head>
-    <meta name="keywords" content="jQuery Gauge, Gauge, Radial Gauge, jqxGauge" />
-    <meta name="description" content="In the following demo you can see how you can cuztomize jqxGauge's ranges. You can set range's start and end width, start and end distance from the gauge's bundaries and custom style." />
-    <title id='Description'>jqxGauge displays an indicator within a range of values. Gauges
-        can be used in a table or matrix to show the relative value of a field in a range
-        of values in the data region, for example, as a KPI</title>
+    <title id='Description'>Thermometer displays the current temperature of ser Mika's residence.</title>
     <link rel="stylesheet" href="css/jqx.base.css" type="text/css" />
     <script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
     <script type="text/javascript" src="js/jqxcore.js"></script>
@@ -36,10 +32,14 @@
     <script type="text/javascript">
         $(document).ready(function () {
 
-            var apiUrl = 'http://scinet.fi/lister.php?latest=1';
+            var apiUrl = 'http://scinet.fi/thermometer-lister.php?latest=1';
 
             $.getJSON(apiUrl, function (data) {
-                console.log(data);
+
+                $('#gaugeContainer').jqxGauge('value', data[0].CELSIUS);
+                //$('#lastUpdate').val(data[0].DATETIME);
+                $( "div#lastUpdate" ).text(data[0].DATETIME) 
+
             });
 
 
@@ -59,7 +59,7 @@
                 $('#gaugeValue').text(Math.round(e.args.value) + '°C');
             });
 
-            $('#gaugeContainer').jqxGauge('value', 25);
+            
         });
     </script>
 </head>
@@ -68,5 +68,7 @@
         <div style="float: left;" id="gaugeContainer"></div>
         <div id="gaugeValue" style="position: absolute; top: 235px; left: 132px; font-family: Sans-Serif; text-align: center; font-size: 17px; width: 70px;"></div>
     </div>
+    <div>Last temperature update: <div id="lastUpdate"></div></div>
+    <div>Temperature is being updated once every minute.</div>
 </body>
 </html>
