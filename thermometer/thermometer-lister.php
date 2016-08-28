@@ -11,7 +11,7 @@ if ($conn->connect_error) {
 } 
 
 if(isset($_GET['lastday'])) {
-	$sql = "SELECT * FROM temperatures WHERE DATETIME >= now() - INTERVAL 1 DAY;";
+	$sql = "SELECT * FROM temperatures WHERE DATETIME >= now() - INTERVAL 1 DAY ORDER BY DATETIME DESC;";
 
 	$result = $conn->query($sql);
 
@@ -23,7 +23,7 @@ if(isset($_GET['lastday'])) {
 
 	}
 
-	echo json_encode($temparray
+	echo json_encode($temparray);
 }
 
 
