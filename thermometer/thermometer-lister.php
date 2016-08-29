@@ -1,29 +1,14 @@
 ﻿<?php
 
 include("../globals.php");
+include("../db.php");
 
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-} 
+$dbConnection = new DBConnection($hostname, $username, $password, $dbname);
+$dbConnection->createDBConnection();	
 
 if(isset($_GET['lastday'])) {
-	$sql = "SELECT * FROM temperatures WHERE DATETIME >= now() - INTERVAL 1 DAY ORDER BY DATETIME DESC;";
 
-	$result = $conn->query($sql);
-
-	$temparray = array();
-
-	while($row = $result->fetch_assoc()) {
-
-	$temparray[] = $row;
-
-	}
-
-	echo json_encode($temparray);
+	echo json_encode($dbConnection->getLastDayTemperature());
 }
 
 
@@ -31,34 +16,12 @@ if(isset($_GET['lastday'])) {
 
 if(isset($_GET['latest'])) {
 
-	$sql = "SELECT * FROM temperatures ORDER BY DATETIME DESC LIMIT 1;";
-	$result = $conn->query($sql);
-
-	$temparray = array();
-
-	while($row = $result->fetch_assoc()) {
-
-	$temparray[] = $row;
-
-	}
-
-	echo json_encode($temparray);
+	print_r($dbConnection->getLatestTemperature());
 	
 }
 else {
 
-	$sql = "SELECT * FROM temperatures ORDER BY DATETIME DESC;";
-	$result = $conn->query($sql);
-
-	$temparray = array();
-
-	while($row = $result->fetch_assoc()) {
-
-	$temparray[] = $row;
-
-	}
-
-	echo json_encode($temparray);
+	echo json_encode($dbConnection->getAllTemperatures());
 
 }
 
