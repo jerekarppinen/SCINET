@@ -36,8 +36,8 @@
 
             $.getJSON(apiUrl, function (data) {
 
-                $('#gaugeContainer').jqxGauge('value', data[0].CELSIUS);
-                $( "div#lastUpdate" ).text(data[0].DATETIME) 
+                $('#gaugeContainer').jqxGauge('value', data.CELSIUS);
+                $( "div#lastUpdate" ).text(data.DATETIME) 
 
             });
 
