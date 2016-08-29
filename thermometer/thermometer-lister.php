@@ -3,20 +3,16 @@
 include("../globals.php");
 include("../db.php");
 
-$dbConnection = new DBConnection($hostname, $username, $password, $dbname);
-$dbConnection->createDBConnection();	
+$dbConnection = new DBConnection($hostname, $username, $password, $dbName);
+$dbConnection->createDBConnection();
 
 if(isset($_GET['lastday'])) {
 
 	echo json_encode($dbConnection->getLastDayTemperature());
 }
-
-
-
-
 if(isset($_GET['latest'])) {
 
-	print_r($dbConnection->getLatestTemperature());
+	echo json_encode(($dbConnection->getLatestTemperature()));
 	
 }
 else {

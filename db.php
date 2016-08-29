@@ -23,7 +23,7 @@ class DBConnection {
 
 	function getAllTemperatures() {
 
-		$sql = "SELECT * FROM SCINET.temperatures ORDER BY DATETIME DESC;";
+		$sql = "SELECT * FROM $this->dbName.temperatures ORDER BY DATETIME DESC;";
 
 		try {
 			$sth = $this->connection->prepare($sql);
@@ -39,7 +39,7 @@ class DBConnection {
 
 	function getLastDayTemperature() {
 
-		$sql = "SELECT * FROM SCINET.temperatures WHERE DATETIME >= now() - INTERVAL 1 DAY ORDER BY DATETIME DESC;";
+		$sql = "SELECT * FROM $this->dbName.temperatures WHERE DATETIME >= now() - INTERVAL 1 DAY ORDER BY DATETIME DESC;";
 
 		try {
 			$sth = $this->connection->prepare($sql);
@@ -55,7 +55,7 @@ class DBConnection {
 
 	function getLatestTemperature() {
 
-		$sql = "SELECT * FROM SCINET.temperatures ORDER BY DATETIME DESC LIMIT 1;";
+		$sql = "SELECT * FROM $this->dbName.temperatures ORDER BY DATETIME DESC LIMIT 1;";
 
 		try {
 			$sth = $this->connection->prepare($sql);
@@ -72,7 +72,7 @@ class DBConnection {
 	function insertTemperature($celsius) {
 
 		try {
-			$sth = $this->connection->prepare("INSERT INTO SCINET.temperatures (celsius) VALUES (:celsius)");
+			$sth = $this->connection->prepare("INSERT INTO $this->dbName.temperatures (celsius) VALUES (:celsius)");
 			return $sth->execute(array("celsius" => $celsius));
 		} catch(Exception $e) {
 			die($e);
